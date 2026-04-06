@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo4j Chat Agent</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>🤖 Neo4j Chat Agent</h1>
+                <p>Query your Neo4j database with natural language</p>
+            </div>
+            <div class="status-indicator" id="statusIndicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking connection...</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="chat-container">
+                <div class="messages" id="messagesContainer">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <p>👋 Hello! I'm your Neo4j Chat Agent. Ask me anything about your database using natural language.</p>
+                            <p style="font-size: 0.9em; opacity: 0.8; margin-top: 0.5em;">Example questions:</p>
+                            <ul style="font-size: 0.9em; opacity: 0.8; margin-top: 0.5em;">
+                                <li>Find all movies released in 2020</li>
+                                <li>Show me actors who have worked with Tom Hanks</li>
+                                <li>What are the top rated movies?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <form id="chatForm" onsubmit="sendMessage(event)">
+                        <input 
+                            type="text" 
+                            id="messageInput" 
+                            placeholder="Ask a question about your database..." 
+                            autocomplete="off"
+                            disabled
+                        >
+                        <button type="submit" id="sendButton" disabled>
+                            <span>Send</span>
+                            <span class="icon">📤</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <aside class="sidebar">
+                <div class="panel">
+                    <h3>📋 Query Details</h3>
+                    <div id="queryDetails" class="details-content">
+                        <p style="color: #999;">Send a message to see the generated Cypher query</p>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <h3>📊 Results</h3>
+                    <div id="resultsPanel" class="details-content">
+                        <p style="color: #999;">Results will appear here</p>
+                    </div>
+                </div>
+            </aside>
+        </main>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loadingIndicator" class="loading-indicator hidden">
+        <div class="spinner"></div>
+        <p>Processing your request...</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
