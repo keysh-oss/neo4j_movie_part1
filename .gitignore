@@ -1,0 +1,61 @@
+# Environment variables and secrets
+.env
+.env.local
+.env.*.local
+.env.production.local
+
+# Node modules
+node_modules/
+npm-debug.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+Thumbs.db
+.Thumbs.db
+
+# Build and distribution
+dist/
+build/
+*.tgz
+
+# Logs
+logs/
+*.log
+
+# Database files (if storing locally)
+*.db
+*.sqlite
+*.sqlite3
+
+# API keys and credentials
+.credentials
+credentials.json
+
+# OS-specific
+.DS_Store
+.AppleDouble
+.LSOverride
+*.swp
+*.swo
+.vscode/settings.json
+
+# Temporary files
+*.tmp
+temp/
+
+# Neo4j specific
+neo4j-data/
+data/graph.db/
