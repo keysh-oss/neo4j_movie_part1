@@ -54,20 +54,50 @@
 
             <aside class="sidebar">
                 <div class="panel">
-                    <h3>📋 Query Details</h3>
-                    <div id="queryDetails" class="details-content">
-                        <p style="color: #999;">Send a message to see the generated Cypher query</p>
+                    <div class="panel-header">
+                        <h3>📤 AI File Upload</h3>
+                        <button id="toggleUploadPanelButton" class="panel-toggle" type="button" aria-expanded="true" aria-controls="uploadPanel">▾</button>
+                    </div>
+                    <div id="uploadPanel" class="details-content upload-content panel-content-collapsible">
+                        <p class="muted">Upload CSV, TSV, JSON, or Cypher file. LLM will suggest 2-3 schemas/options before import.</p>
+
+                        <input type="file" id="dataFileInput" accept=".csv,.tsv,.json,.cypher,.cql" />
+
+                        <div class="upload-actions">
+                            <button id="analyzeFileButton" type="button">Analyze Schema</button>
+                            <button id="uploadFileButton" type="button" disabled>Upload to Neo4j</button>
+                        </div>
+
+                        <div id="schemaSummary" class="schema-summary muted">No file analyzed yet.</div>
                     </div>
                 </div>
 
                 <div class="panel">
-                    <h3>📊 Results</h3>
-                    <div id="resultsPanel" class="details-content">
-                        <p style="color: #999;">Results will appear here</p>
+                    <div class="panel-header">
+                        <h3>📋 Query Details</h3>
+                        <button id="toggleQueryDetailsButton" class="panel-toggle" type="button" aria-expanded="true" aria-controls="queryDetails">▾</button>
+                    </div>
+                    <div id="queryDetails" class="details-content panel-content-collapsible">
+                        <p style="color: #999;">Send a message to see the generated Cypher query</p>
                     </div>
                 </div>
+
             </aside>
         </main>
+    </div>
+
+    <div id="schemaModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="schemaModalTitle">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="schemaModalTitle">Select Schema Option</h3>
+                <button id="closeSchemaModalButton" type="button" class="modal-close">✕</button>
+            </div>
+            <p id="schemaModalHint" class="muted">Choose one schema option to use for upload.</p>
+            <div id="schemaModalOptions" class="schema-options"></div>
+            <div class="modal-actions">
+                <button id="confirmSchemaSelectionButton" type="button">Use Selected Schema</button>
+            </div>
+        </div>
     </div>
 
     <!-- Loading indicator -->
